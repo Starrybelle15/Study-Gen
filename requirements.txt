@@ -4,8 +4,4 @@ torch
 accelerate
 sentencepiece
 pdfplumber
-<<<<<<< HEAD
 python-docx
-=======
-python-docx
->>>>>>> 39954a7e3ffe6319e2668c0c93eb987047e91f7a

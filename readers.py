@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 StudyGen AI
 Document Readers
@@ -71,3 +72,6 @@ def extract_text(file_path):
         raise ValueError(
             f"Unsupported file format: {extension}"
         )
+=======
+
+>>>>>>> 39954a7e3ffe6319e2668c0c93eb987047e91f7a

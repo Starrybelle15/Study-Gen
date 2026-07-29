@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 StudyGen AI
 Prompt templates for question generation.
@@ -74,3 +75,6 @@ Study Material
 """
 
     return prompt
+=======
+
+>>>>>>> 39954a7e3ffe6319e2668c0c93eb987047e91f7a

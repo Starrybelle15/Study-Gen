@@ -1,0 +1,5 @@
+Machine Learning is a branch of Artificial Intelligence.
+
+Supervised learning uses labelled data.
+
+Unsupervised learning finds hidden patterns.

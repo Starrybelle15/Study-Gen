@@ -4,6 +4,7 @@ Question Generator using Hugging Face Inference API
 """
 
 import os
+
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
@@ -17,67 +18,46 @@ from utils import clean_text
 load_dotenv()
 
 HF_TOKEN = os.getenv("HF_TOKEN")
-MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-7B-Instruct")
+MODEL_NAME = os.getenv(
+    "MODEL_NAME",
+    "Qwen/Qwen2.5-7B-Instruct"
+)
 
 if not HF_TOKEN:
-    raise ValueError("HF_TOKEN not found. Please create a .env file.")
+    raise ValueError(
+        "HF_TOKEN not found. Please create a .env file."
+    )
 
 print("Connecting to Hugging Face Inference API...")
 
-# ----------------------------------------------------
-# Create Hugging Face client
-# ----------------------------------------------------
-
 client = InferenceClient(
-    provider="hf-inference",
-    api_key=HF_TOKEN
+    api_key=HF_TOKEN,
 )
 
-print("✅ Connected to Hugging Face Inference API")
 print("Connected successfully!")
-
 
 # ----------------------------------------------------
 # Generate Questions
 # ----------------------------------------------------
 
+
 def generate_questions(
     text,
     question_type,
     difficulty,
-    number
+    number,
 ):
     """
-    Generate study questions using Hugging Face Inference API.
-    """
-    """
-    Generate study questions from notes.
-
-    Parameters
-    ----------
-    text : str
-        Source study notes.
-
-    question_type : str
-        Multiple Choice
-        Short Answer
-        True/False
-        Essay
-
-    difficulty : str
-        Easy
-        Medium
-        Hard
-
-    number : int
-        Number of questions.
+    Generate study questions from supplied notes.
     """
 
     if not text or not text.strip():
         return "No study material was provided."
 
+    # Clean the notes
     text = clean_text(text)
 
+    # Build the AI prompt
     prompt = build_prompt(
         text=text,
         question_type=question_type,
@@ -90,9 +70,10 @@ def generate_questions(
             "role": "system",
             "content": (
                 "You are an expert university lecturer and assessment designer. "
-                "Generate high-quality study and revision questions based ONLY on the supplied notes."
+                "Generate high-quality revision questions based ONLY on the notes "
+                "provided by the user. Do not invent facts that are not present "
+                "in the notes."
             ),
-
         },
         {
             "role": "user",
@@ -100,24 +81,13 @@ def generate_questions(
         },
     ]
 
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=messages,
-        max_tokens=1200,
-        temperature=0.7,
-    )
-
-    return response.choices[0].message.content.strip()
-
-    "content": prompt
-        
     try:
 
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=messages,
-            temperature=0.6,
-            max_tokens=1500,
+            max_tokens=1200,
+            temperature=0.7,
         )
 
         if (
@@ -137,30 +107,32 @@ def generate_questions(
 
 
 # ----------------------------------------------------
-# Quick Local Test
+# Local Test
 # ----------------------------------------------------
 
 if __name__ == "__main__":
 
     sample = """
-Artificial Intelligence is the simulation of human intelligence by machines.
+Artificial Intelligence (AI) is the simulation of human intelligence by machines.
 
-Machine Learning is a subset of AI.
+Machine Learning is a subset of Artificial Intelligence.
 
 Deep Learning is a subset of Machine Learning.
 
 Supervised learning uses labelled data.
 
-Unsupervised learning discovers hidden patterns.
+Unsupervised learning discovers hidden patterns in data.
 
-Reinforcement learning learns through rewards and penalties.
+Reinforcement learning trains agents using rewards and penalties.
 """
 
-    print(
-        generate_questions(
-            text=sample,
-            question_type="Multiple Choice",
-            difficulty="Medium",
-            number=5,
-        )
+    print("\nGenerating questions...\n")
+
+    result = generate_questions(
+        text=sample,
+        question_type="Multiple Choice",
+        difficulty="Medium",
+        number=5,
     )
+
+    print(result)

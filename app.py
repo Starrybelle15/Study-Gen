@@ -74,7 +74,7 @@ with gr.Blocks(
     gr.Image(
     "assets/banner.png",
     show_label=False,
-    show_download_button=False,
+    show_download_button=True,
     height=220,
 )
 

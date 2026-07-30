@@ -1,10 +1,6 @@
-import tempfile
-from pathlib import Path
-
 import gradio as gr
 
 from exporter import export_docx
-
 from generator import generate_questions
 from readers import read_file
 
@@ -23,12 +19,12 @@ def process_document(
 
     try:
 
-        # Get text
+        # Get text from uploaded file or pasted notes
         if uploaded_file is not None:
 
             text = read_file(uploaded_file)
 
-        elif pasted_notes.strip():
+        elif pasted_notes and pasted_notes.strip():
 
             text = pasted_notes
 
@@ -39,6 +35,7 @@ def process_document(
                 None,
             )
 
+
         # Generate questions
         questions = generate_questions(
             text=text,
@@ -47,34 +44,33 @@ def process_document(
             number=int(number),
         )
 
+
         # Export DOCX
         docx_file = export_docx(questions)
 
+
         return questions, docx_file
+
 
     except Exception as e:
 
         return f"Error:\n\n{e}", None
 
 
+
 # --------------------------------------------------
 # Interface
 # --------------------------------------------------
 
-theme = gr.themes.Soft(
-    primary_hue="blue",
-    secondary_hue="indigo",
-)
-
 with gr.Blocks(
-    title="StudyGen AI",
-    theme=theme,
+    title="StudyGen AI"
 ) as demo:
 
+
+    # Banner image
     gr.Image(
-    "assets/banner.png",
-    show_label=False,
-    show_download_button=True,
+    value="assets/banner.png",
+    label=None,
     height=220,
 )
 
@@ -82,7 +78,7 @@ with gr.Blocks(
         """
 # 📚 StudyGen AI
 
-Generate study questions in seconds, from:
+Generate study questions in seconds from:
 
 - PDF
 - DOCX
@@ -93,7 +89,13 @@ Powered by Hugging Face AI.
 """
     )
 
+
     with gr.Row():
+
+
+        # -------------------------------
+        # Input Column
+        # -------------------------------
 
         with gr.Column():
 
@@ -104,13 +106,16 @@ Powered by Hugging Face AI.
                     ".docx",
                     ".txt",
                 ],
+                type="filepath",
             )
+
 
             notes = gr.Textbox(
                 label="Or Paste Notes",
                 lines=12,
                 placeholder="Paste your lecture notes here...",
             )
+
 
             question_type = gr.Dropdown(
                 choices=[
@@ -123,6 +128,7 @@ Powered by Hugging Face AI.
                 label="Question Type",
             )
 
+
             difficulty = gr.Dropdown(
                 choices=[
                     "Easy",
@@ -133,6 +139,7 @@ Powered by Hugging Face AI.
                 label="Difficulty",
             )
 
+
             number = gr.Slider(
                 minimum=1,
                 maximum=20,
@@ -141,28 +148,42 @@ Powered by Hugging Face AI.
                 label="Number of Questions",
             )
 
+
             generate_button = gr.Button(
                 "🚀 Generate Questions",
                 variant="primary",
             )
+
+
+
+        # -------------------------------
+        # Output Column
+        # -------------------------------
 
         with gr.Column():
 
             output = gr.Textbox(
                 label="Generated Questions",
                 lines=24,
-                show_copy_button=True,
             )
+
 
             download = gr.File(
                 label="Download DOCX",
             )
 
+
+
+    # -------------------------------
+    # Example
+    # -------------------------------
+
     gr.Examples(
         examples=[
             [
                 None,
-                """Artificial Intelligence enables computers to perform tasks that normally require human intelligence.
+                """
+Artificial Intelligence enables computers to perform tasks that normally require human intelligence.
 
 Machine Learning is a subset of Artificial Intelligence.
 
@@ -172,7 +193,8 @@ Supervised Learning uses labelled data.
 
 Unsupervised Learning identifies hidden patterns.
 
-Reinforcement Learning learns using rewards and penalties.""",
+Reinforcement Learning learns using rewards and penalties.
+""",
                 "Multiple Choice",
                 "Medium",
                 5,
@@ -187,6 +209,12 @@ Reinforcement Learning learns using rewards and penalties.""",
         ],
     )
 
+
+
+    # -------------------------------
+    # Button Action
+    # -------------------------------
+
     generate_button.click(
         fn=process_document,
         inputs=[
@@ -200,9 +228,9 @@ Reinforcement Learning learns using rewards and penalties.""",
             output,
             download,
         ],
-        show_progress="full",
     )
-    show_progress="full"
+
+
 
     gr.Markdown(
         """
@@ -213,7 +241,7 @@ Reinforcement Learning learns using rewards and penalties.""",
 Built using:
 
 - Python
-- Gradio
+- Gradio 6
 - Hugging Face Inference API
 - pdfplumber
 - python-docx
@@ -222,10 +250,18 @@ Built using:
 """
     )
 
+
+
 # --------------------------------------------------
 # Launch
 # --------------------------------------------------
 
 if __name__ == "__main__":
 
-    demo.launch()
+    demo.launch(
+        theme=gr.themes.Soft(
+            primary_hue="blue",
+            secondary_hue="indigo",
+        ),
+        share=False,
+    )

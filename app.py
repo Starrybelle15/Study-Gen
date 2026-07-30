@@ -77,11 +77,22 @@ with gr.Blocks(
     height=220,
 )
 
+    gr.Image(
+        value=str(BANNER),
+        show_label=False,
+        show_download_button=False,
+        interactive=False,
+        container=False,
+    )
+
+    gr.Markdown("# 📚 Auto QGen-AI")
+    gr.Markdown("### AI-Powered Question Generator")
+
     gr.Markdown(
         """
-# 📚 StudyGen AI
+# 📚 QGen-AI
 
-Generate study questions in seconds from:
+Generate study and revision questions in seconds from:
 
 - PDF
 - DOCX

@@ -69,27 +69,27 @@ with gr.Blocks(
     title="StudyGen AI"
 ) as demo:
 
+    gr.Image(
+            value=str(BANNER),
+            show_label=False,
+            interactive=False,
+            container=False,
+            height=120
+        )
 
     # Banner image
     gr.Image(
     value="assets/callum.png",
     label=None,
-    height=220,
-)
-
-    gr.Image(
-        value=str(BANNER),
-        show_label=False,
-        interactive=False,
-        container=False,
+    height=120,
     )
 
     gr.Markdown("# 📚 Auto QGen-AI")
-    gr.Markdown("### AI-Powered Question Generator")
+    gr.Markdown("### AI-Powered Automated Question Generator")
 
     gr.Markdown(
         """
-# 📚 QGen-AI
+# 🧾 QGen-AI
 
 Generate study and revision questions in seconds from:
 
@@ -245,7 +245,7 @@ Reinforcement Learning learns using rewards and penalties.
 
     gr.HTML("""
 <div style="text-align:center;">
-    <img src="file/assets/banner.png"
+    <img src="file/assets/a qgen ai.png"
          style="width:100%;
                 max-width:1200px;
                 border-radius:300px;">
@@ -258,7 +258,7 @@ Reinforcement Learning learns using rewards and penalties.
         """
 ---
 
-### StudyGen AI
+### Auto QGen-AI
 
 Built using:
 
@@ -268,7 +268,7 @@ Built using:
 - pdfplumber
 - python-docx
 
-© 2026 StudyGen AI
+© 2026 QGen AI
 """
     )
 

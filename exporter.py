@@ -1,5 +1,5 @@
 """
-StudyGen AI
+QGen AI
 exporter.py
 """
 
@@ -31,7 +31,7 @@ def export_docx(questions):
 
             doc.add_paragraph(line)
 
-    filename = "StudyGen_Questions.docx"
+    filename = "QGen_Questions.docx"
 
     doc.save(filename)
 

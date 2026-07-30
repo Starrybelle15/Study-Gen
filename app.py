@@ -6,8 +6,6 @@ from readers import read_file
 
 from pathlib import Path
 
-BANNER = Path("assets/a qgen ai.png")
-
 # --------------------------------------------------
 # Main Processing Function
 # --------------------------------------------------
@@ -78,6 +76,7 @@ with gr.Blocks(
         #            border-radius:12px;">
     #</div>
     #""")
+    # BANNER = Path("assets/a qgen ai.png")
 
     gr.HTML("""
 <div style="text-align:center; margin-bottom:20px;">

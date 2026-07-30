@@ -69,19 +69,33 @@ with gr.Blocks(
     title="StudyGen AI"
 ) as demo:
 
-    gr.Image(
-            value=str(BANNER),
-            show_label=False,
-            interactive=False,
-            container=False,
-            height=120
-        )
+    # Banner
+    gr.HTML("""
+    <div style="text-align:center;">
+        <img src="/gradio_api/file=assets/a qgen ai.png"
+             style="width:100%;
+                    max-width:1200px;
+                    border-radius:12px;">
+    </div>
+    """)
 
-    # Banner image
-    gr.Image(
-    value="assets/callum.png",
-    label=None,
-    height=120,
+    gr.HTML("""
+<div style="text-align:center; margin-bottom:20px;">
+    <img src="/gradio_api/file=assets/callum.png"
+         style="width:180px; height:auto;">
+</div>
+""")
+
+    # Logo + Title
+    with gr.Row():
+        # Banner image
+        gr.Image(
+            value="assets/callum.png",
+            label=None,
+            height=120,
+            width=180,
+            container=False,
+            interactive=False
     )
 
     gr.Markdown("# 📚 Auto QGen-AI")
@@ -91,7 +105,7 @@ with gr.Blocks(
         """
 # 🧾 QGen-AI
 
-Generate study and revision questions in seconds from:
+Generate study and revision questions in seconds, using from:
 
 - PDF
 - DOCX
@@ -242,17 +256,6 @@ Reinforcement Learning learns using rewards and penalties.
             download,
         ],
     )
-
-    gr.HTML("""
-<div style="text-align:center;">
-    <img src="file/assets/a qgen ai.png"
-         style="width:100%;
-                max-width:1200px;
-                border-radius:300px;">
-</div>
-""")
-
-
 
     gr.Markdown(
         """

@@ -4,6 +4,9 @@ from exporter import export_docx
 from generator import generate_questions
 from readers import read_file
 
+from pathlib import Path
+
+BANNER = Path("assets/a qgen ai.png")
 
 # --------------------------------------------------
 # Main Processing Function

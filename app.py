@@ -69,7 +69,7 @@ with gr.Blocks(
 
     # Banner image
     gr.Image(
-    value="assets/banner.png",
+    value="assets/callum.png",
     label=None,
     height=220,
 )

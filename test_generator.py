@@ -7,6 +7,8 @@ import os
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
+from generator import generate_questions
+
 from prompts import build_prompt
 from utils import clean_text
 

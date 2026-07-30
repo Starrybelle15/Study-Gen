@@ -1,108 +1,67 @@
 """
 StudyGen AI
-Prompt Builder
+prompts.py
 
-Builds prompts for Qwen2.5-Instruct.
+Builds prompts for the AI model.
 """
 
 
 def build_prompt(text, question_type, difficulty, number):
     """
-    Build an optimized prompt for Qwen.
-
-    Args:
-        text (str): Study material
-        question_type (str): Short Answer, Multiple Choice,
-                             True/False, Essay
-        difficulty (str): Easy, Medium, Hard
-        number (int): Number of questions
-
-    Returns:
-        str
+    Build a structured prompt for question generation.
     """
 
-    question_type = question_type.strip().lower()
+    return f"""
+You are an expert university lecturer, examiner, and instructional designer.
 
-    if question_type == "multiple choice":
+Your job is to generate high-quality study questions using ONLY the study material provided.
 
-        instructions = f"""
-Generate EXACTLY {number} multiple-choice questions.
+=========================
+RULES
+=========================
 
-Requirements:
-- Four options labelled A, B, C and D.
-- Only ONE correct answer.
-- State the correct answer.
-- Briefly explain why the answer is correct.
-"""
+1. Use ONLY the supplied notes.
+2. Do NOT invent facts.
+3. Do NOT use outside knowledge.
+4. Do NOT include answers.
+5. Produce EXACTLY {number} questions.
+6. Number each question.
+7. Match the requested difficulty.
+8. Make the wording clear and professional.
+9. Avoid duplicate questions.
+10. Ensure every question is relevant to the notes.
 
-    elif question_type == "short answer":
-
-        instructions = f"""
-Generate EXACTLY {number} short-answer questions.
-
-Requirements:
-- Provide a concise answer after each question.
-- Keep answers under three sentences.
-"""
-
-    elif question_type in ["true/false", "true false", "true / false"]:
-
-        instructions = f"""
-Generate EXACTLY {number} True/False questions.
-
-Requirements:
-- State whether each statement is True or False.
-- Provide a one-sentence explanation.
-"""
-
-    elif question_type == "essay":
-
-        instructions = f"""
-Generate EXACTLY {number} essay questions.
-
-Requirements:
-- Encourage critical thinking.
-- Do NOT provide answers.
-"""
-
-    else:
-
-        instructions = f"""
-Generate EXACTLY {number} study questions.
-"""
-
-    prompt = f"""
-You are an experienced university lecturer and assessment designer.
-
-Your task is to create high-quality revision questions based ONLY on the study material provided.
-
-Difficulty Level:
-{difficulty}
+=========================
+QUESTION SETTINGS
+=========================
 
 Question Type:
-{question_type.title()}
+{question_type}
 
-Instructions:
-{instructions}
+Difficulty:
+{difficulty}
 
-General Rules:
-
-1. Use ONLY information from the study material.
-2. Do NOT invent facts or add outside knowledge.
-3. Cover different concepts where possible.
-4. Avoid duplicate or very similar questions.
-5. Write clear, grammatically correct English.
-6. Number every question.
-7. Follow the requested format exactly.
-
-Study Material
-========================
+=========================
+STUDY NOTES
+=========================
 
 {text}
 
-========================
+=========================
+OUTPUT FORMAT
+=========================
 
-Now generate the questions.
+1. Question one
+
+2. Question two
+
+3. Question three
+
+Continue until exactly {number} questions have been produced.
+
+Do not include explanations.
+
+Do not include answers.
+
+Only return the questions.
 """
-
-    return prompt

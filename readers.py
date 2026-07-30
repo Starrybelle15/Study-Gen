@@ -1,18 +1,14 @@
-<<<<<<< HEAD
 """
 StudyGen AI
-Document Readers
+readers.py
 """
 
-import os
 import pdfplumber
 from docx import Document
 
 
 def read_pdf(path):
-    """
-    Extract text from a PDF file.
-    """
+
     text = ""
 
     with pdfplumber.open(path) as pdf:
@@ -28,50 +24,37 @@ def read_pdf(path):
 
 
 def read_docx(path):
-    """
-    Extract text from a DOCX file.
-    """
+
     doc = Document(path)
 
-    text = "\n".join(
+    return "\n".join(
         paragraph.text
         for paragraph in doc.paragraphs
     )
 
-    return text
-
 
 def read_txt(path):
-    """
-    Extract text from a TXT file.
-    """
-    with open(path, "r", encoding="utf-8") as file:
-        return file.read()
+
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
 
 
-def extract_text(file_path):
-    """
-    Detect the file type and extract text.
-    """
+def read_file(file):
 
-    if not file_path:
-        return ""
-
-    extension = os.path.splitext(file_path)[1].lower()
-
-    if extension == ".pdf":
-        return read_pdf(file_path)
-
-    elif extension == ".docx":
-        return read_docx(file_path)
-
-    elif extension == ".txt":
-        return read_txt(file_path)
-
+    if hasattr(file, "name"):
+        path = file.name
     else:
-        raise ValueError(
-            f"Unsupported file format: {extension}"
-        )
-=======
+        path = str(file)
 
->>>>>>> 39954a7e3ffe6319e2668c0c93eb987047e91f7a
+    path = path.lower()
+
+    if path.endswith(".pdf"):
+        return read_pdf(path)
+
+    if path.endswith(".docx"):
+        return read_docx(path)
+
+    if path.endswith(".txt"):
+        return read_txt(path)
+
+    raise ValueError("Unsupported file type.")

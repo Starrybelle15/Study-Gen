@@ -1,6 +1,5 @@
 """
-StudyGen AI
-Question Generator using Hugging Face Inference API
+StudyGen AI Question Generator using Hugging Face Inference API
 """
 
 import os
@@ -109,8 +108,10 @@ def generate_questions(
 
     return response.choices[0].message.content.strip()
 
-    "content": prompt
-        
+            "content": prompt,
+        },
+    ]
+
     try:
 
         response = client.chat.completions.create(

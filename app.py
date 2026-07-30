@@ -70,19 +70,19 @@ with gr.Blocks(
 ) as demo:
 
     # Banner
-    gr.HTML("""
-    <div style="text-align:center;">
-        <img src="/gradio_api/file=assets/a qgen ai.png"
-             style="width:100%;
-                    max-width:1200px;
-                    border-radius:12px;">
-    </div>
-    """)
+   # gr.HTML("""
+    #<div style="text-align:center;">
+     #   <img src="/gradio_api/file=assets/a qgen ai.png"
+      #       style="width:100%;
+       #             max-width:1200px;
+        #            border-radius:12px;">
+    #</div>
+    #""")
 
     gr.HTML("""
 <div style="text-align:center; margin-bottom:20px;">
     <img src="/gradio_api/file=assets/callum.png"
-         style="width:180px; height:auto;">
+         style="width:280px; height:auto;">
 </div>
 """)
 

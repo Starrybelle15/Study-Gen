@@ -1,5 +1,5 @@
 """
-StudyGen AI
+Auto QGen AI
 Question Generator using Hugging Face Inference API
 """
 

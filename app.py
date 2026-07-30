@@ -244,6 +244,15 @@ Reinforcement Learning learns using rewards and penalties.
         ],
     )
 
+    gr.HTML("""
+<div style="text-align:center;">
+    <img src="file/assets/banner.png"
+         style="width:100%;
+                max-width:900px;
+                border-radius:12px;">
+</div>
+""")
+
 
 
     gr.Markdown(

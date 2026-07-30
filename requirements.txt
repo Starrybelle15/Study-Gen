@@ -1,8 +1,5 @@
 gradio==4.44.1
-transformers>=4.46.0
-accelerate
-torch
-sentencepiece
+huggingface_hub>=0.27.0
+python-dotenv
 pdfplumber
 python-docx
-huggingface_hub

@@ -80,7 +80,6 @@ with gr.Blocks(
     gr.Image(
         value=str(BANNER),
         show_label=False,
-        show_download_button=False,
         interactive=False,
         container=False,
     )
@@ -248,8 +247,8 @@ Reinforcement Learning learns using rewards and penalties.
 <div style="text-align:center;">
     <img src="file/assets/banner.png"
          style="width:100%;
-                max-width:900px;
-                border-radius:12px;">
+                max-width:1200px;
+                border-radius:300px;">
 </div>
 """)
 

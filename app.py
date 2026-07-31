@@ -6,6 +6,16 @@ from readers import read_file
 
 from pathlib import Path
 
+css = """
+body {
+    background: url("/gradio_api/file=assets/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.gradio-container {
+    background: transparent !important;
+}
+"""
 # --------------------------------------------------
 # Main Processing Function
 # --------------------------------------------------
@@ -64,9 +74,10 @@ def process_document(
 # --------------------------------------------------
 
 with gr.Blocks(
+    css=css,
     title="StudyGen AI"
 ) as demo:
-
+t 
     # Banner
    # gr.HTML("""
     #<div style="text-align:center;">

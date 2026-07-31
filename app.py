@@ -8,7 +8,7 @@ from pathlib import Path
 
 css = """
 body {
-    background: url("/gradio_api/file=assets/background.jpg") no-repeat center center fixed;
+    background: url("/gradio_api/file=assets/bg.webp") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -77,7 +77,7 @@ with gr.Blocks(
     css=css,
     title="StudyGen AI"
 ) as demo:
-t 
+ 
     # Banner
    # gr.HTML("""
     #<div style="text-align:center;">

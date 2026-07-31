@@ -287,5 +287,5 @@ if __name__ == "__main__":
             primary_hue="blue",
             secondary_hue="indigo",
         ),
-        share=False,
+        share=True,
     )

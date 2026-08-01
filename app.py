@@ -6,14 +6,137 @@ from readers import read_file
 
 from pathlib import Path
 
+#css = """
+#body {
+ #   background: url("/gradio_api/file=assets/bg.webp") no-repeat center center fixed;
+  #  background-size: cover;
+#}
+
+#.gradio-container {
+ #   background: transparent !important;
+#}
+#"""
+
 css = """
-body {
-    background: url("/gradio_api/file=assets/bg.webp") no-repeat center center fixed;
-    background-size: cover;
+/* ===============================
+   Background
+================================ */
+
+body{
+    background:url("/gradio_api/file=assets/bg.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
-.gradio-container {
-    background: transparent !important;
+.gradio-container{
+    background:rgba(8,15,30,.55)!important;
+    backdrop-filter:blur(8px);
+}
+
+
+/* ===============================
+   Header
+================================ */
+
+h1{
+    color:white !important;
+    font-size:42px !important;
+    font-weight:700;
+}
+
+h2,h3,h4{
+    color:#dbeafe !important;
+}
+
+p{
+    color:#e5e7eb !important;
+}
+
+
+/* ===============================
+   Cards
+================================ */
+
+.gr-group,
+.gr-box,
+.block{
+    background:rgba(255,255,255,.12)!important;
+    backdrop-filter:blur(16px);
+    border-radius:20px !important;
+    border:1px solid rgba(255,255,255,.15)!important;
+}
+
+
+/* ===============================
+   Upload Box
+================================ */
+
+.gr-file{
+    border:2px dashed #60a5fa !important;
+    border-radius:18px !important;
+}
+
+
+/* ===============================
+   Textboxes
+================================ */
+
+textarea{
+    background:rgba(255,255,255,.95)!important;
+    border-radius:14px!important;
+}
+
+input{
+    background:white!important;
+}
+
+
+/* ===============================
+   Dropdowns
+================================ */
+
+select{
+    border-radius:12px!important;
+}
+
+
+/* ===============================
+   Slider
+================================ */
+
+input[type=range]{
+    accent-color:#2563eb;
+}
+
+
+/* ===============================
+   Button
+================================ */
+
+button{
+    background:linear-gradient(135deg,#2563eb,#7c3aed)!important;
+    color:white!important;
+    border:none!important;
+    border-radius:14px!important;
+    font-size:18px!important;
+    font-weight:600!important;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+
+
+/* ===============================
+   Footer
+================================ */
+
+hr{
+    border-color:rgba(255,255,255,.2);
 }
 """
 # --------------------------------------------------
@@ -89,9 +212,9 @@ with gr.Blocks(
     #""")
     # BANNER = Path("assets/a qgen ai.png")
 
-    gr.HTML("""
-<div style="text-align:center; margin-bottom:20px;">
-    <img src="/gradio_api/file=assets/callum.png"
+  #  gr.HTML("""
+#<div style="text-align:center; margin-bottom:20px;">
+ #   <img src="/gradio_api/file=assets/callum.png"
          style="width:280px; height:auto;">
 </div>
 """)

@@ -64,7 +64,7 @@ p{
 .block{
     background:rgba(255,255,255,.12)!important;
     backdrop-filter:blur(16px);
-    border-radius:20px !important;
+    border-radius:22px !important;
     border:1px solid rgba(255,255,255,.15)!important;
 }
 
@@ -75,7 +75,7 @@ p{
 
 .gr-file{
     border:2px dashed #60a5fa !important;
-    border-radius:18px !important;
+    border-radius:20px !important;
 }
 
 
@@ -85,7 +85,7 @@ p{
 
 textarea{
     background:rgba(255,255,255,.95)!important;
-    border-radius:14px!important;
+    border-radius:16px!important;
 }
 
 input{
@@ -98,7 +98,7 @@ input{
 ================================ */
 
 select{
-    border-radius:12px!important;
+    border-radius:16px!important;
 }
 
 
@@ -119,7 +119,7 @@ button{
     background:linear-gradient(135deg,#2563eb,#7c3aed)!important;
     color:white!important;
     border:none!important;
-    border-radius:14px!important;
+    border-radius:20px!important;
     font-size:18px!important;
     font-weight:600!important;
     transition:.3s;
@@ -237,7 +237,7 @@ with gr.Blocks(
     gr.Markdown(
 
         """
-    "# 🧾 QGen-AI
+    "🧾 QGen-AI
    Generate study and revision questions in seconds, using from:
 - PDF
 - DOCX

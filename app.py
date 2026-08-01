@@ -215,9 +215,9 @@ with gr.Blocks(
   #  gr.HTML("""
 #<div style="text-align:center; margin-bottom:20px;">
  #   <img src="/gradio_api/file=assets/callum.png"
-         style="width:280px; height:auto;">
-</div>
-""")
+         #style="width:280px; height:auto;">
+#</div>
+#""")
 
     # Logo + Title
     with gr.Row():
@@ -235,11 +235,10 @@ with gr.Blocks(
     gr.Markdown("### AI-Powered Automated Question Generator")
 
     gr.Markdown(
+
         """
-# 🧾 QGen-AI
-
-Generate study and revision questions in seconds, using from:
-
+    "# 🧾 QGen-AI
+   Generate study and revision questions in seconds, using from:
 - PDF
 - DOCX
 - TXT

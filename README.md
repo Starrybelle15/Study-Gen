@@ -1,6 +1,8 @@
 # Auto QGen AI
 
 QGen-AI is an AI-powered educational assistant that automatically generates study and review questions from lecture notes, files.
+<img width="2000" height="2000" alt="4" src="https://github.com/user-attachments/assets/c2041216-2c37-42e4-8fd1-9439907f67a1" />
+
 
 ## Features
 

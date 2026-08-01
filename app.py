@@ -198,7 +198,7 @@ def process_document(
 
 with gr.Blocks(
     css=css,
-    title="StudyGen AI"
+    title="QGen-AI"
 ) as demo:
  
     # Banner
@@ -237,7 +237,7 @@ with gr.Blocks(
     gr.Markdown(
 
         """
-    "🧾 QGen-AI
+    🧾 QGen-AI
    Generate study and revision questions in seconds, using from:
 - PDF
 - DOCX
